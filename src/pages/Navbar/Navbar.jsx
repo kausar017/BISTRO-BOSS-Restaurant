@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import { Link, NavLink } from 'react-router-dom';
+import './Navbar.css'
 const Navbar = () => {
 
 
     const link = <>
-        <Link className='lg:text-white font-bold sm:text-black'>Home</Link>
-        <Link className='lg:text-white font-bold sm:text-black'>CONTACT US</Link>
-        <Link className='lg:text-white font-bold sm:text-black'>DASHBOARD</Link>
-        <Link className='lg:text-white font-bold sm:text-black'>Our Menu</Link>
-        <Link className='lg:text-white font-bold sm:text-black'>Our Shop</Link>
+        <NavLink className='lg:text-white font-bold sm:text-black'>HOME</NavLink>
+        <NavLink className='lg:text-white font-bold sm:text-black'>CONTACT US</NavLink>
+        <NavLink className='lg:text-white font-bold sm:text-black'>DASHBOARD</NavLink>
+        <NavLink className='lg:text-white font-bold sm:text-black'>OUR MANUE</NavLink>
+        <NavLink className='lg:text-white font-bold sm:text-black'>OUR SHOP</NavLink>
     </>
 
     return (
@@ -34,7 +34,7 @@ const Navbar = () => {
                             <div className="indicator">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5"
+                                    className="h-5 w-5 text-white"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -60,7 +60,7 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
                             </div>
                         </div>
                         <ul

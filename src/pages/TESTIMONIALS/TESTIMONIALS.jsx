@@ -15,7 +15,7 @@ import { Navigation, Autoplay } from 'swiper/modules';
 const TESTIMONIALS = () => {
 
     const [revieo, setRevieo] = useState([])
-    console.log(revieo);
+    // console.log(revieo);
 
     useEffect(() => {
         fetch(`./reviews.json`)

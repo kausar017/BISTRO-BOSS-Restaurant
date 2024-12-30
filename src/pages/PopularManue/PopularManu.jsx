@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
 import DynamicTitle from "../../Components/DynamicTitle/DynamicTitle";
 import ManueItem from "./ManueItem/ManueItem";
+import Hooks from "../../Hooks/Hooks";
+import Loader from "../Loader/Loader";
 
 const PopularManu = () => {
 
-    const [manue, setManue] = useState([])
-    // console.log(manue);
-
-    useEffect(() => {
-        fetch('./menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const popularItems = data.filter(item => item.category === 'popular')
-                setManue(popularItems)
-            })
-            .catch(error => {
-                console.log(error, 'error fatching Data');
-
-            })
-    }, [])
+    const [manue, loding] = Hooks()
+    if (loding) {
+        return <Loader></Loader>
+    }
+    const popularItems = manue.filter(item => item.category === 'popular')
+    console.log(popularItems);
 
     return (
         <div className="container mx-auto lg:pt-20 md:pt-72 max-sm:pt-24">
@@ -28,7 +21,7 @@ const PopularManu = () => {
             ></DynamicTitle>
             <div className="grid lg:grid-cols-2 items-center gap-5 py-8 max-sm:p-5">
                 {
-                    manue?.map(data => <ManueItem key={data._id} data={data}></ManueItem>)
+                    popularItems?.map(data => <ManueItem key={data._id} data={data}></ManueItem>)
                 }
             </div>
             <div className="flex flex-col justify-center items-center pb-5 ">

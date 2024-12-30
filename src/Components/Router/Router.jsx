@@ -3,6 +3,8 @@ import {
 } from "react-router-dom";
 import MainLayout from "../MainLayout/MainLayout";
 import Bannar from "../../pages/Bannar/Bannar";
+import Manu from "../../pages/Manu/Manu";
+import Loader from "../../pages/Loader/Loader";
 
 
 const Router = createBrowserRouter([
@@ -13,6 +15,14 @@ const Router = createBrowserRouter([
             {
                 path: '/',
                 element: <Bannar></Bannar>
+            },
+            {
+                path: '/manu',
+                element: <Manu></Manu>
+            },
+            {
+                path: '/lodar',
+                element: <Loader></Loader>
             }
         ]
     },

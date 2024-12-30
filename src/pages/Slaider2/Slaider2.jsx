@@ -20,7 +20,7 @@ const Slaider2 = () => {
     // const { discription, title } =DynamicTitle()
     return (
         <>
-            <section className='w-8/12 mx-auto py-10'>
+            <section className='py-10'>
                 <DynamicTitle discription={'From 11:00am to 10:00pm'} title={"ORDER ONLINE"}>
                 </DynamicTitle>
                 <Swiper
@@ -36,7 +36,7 @@ const Slaider2 = () => {
                         clickable: true,
                     }}
                     modules={[Pagination, Autoplay]}
-                    className="mySwiper"
+                    className=""
                 >
                     <SwiperSlide className="relative group">
                         <img className="w-full transition hover:scale-105" src={slaid1} alt={slaid1} />

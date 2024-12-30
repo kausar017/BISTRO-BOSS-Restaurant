@@ -35,7 +35,7 @@ const Slaider2 = () => {
                     pagination={{
                         clickable: true,
                     }}
-                    modules={[Pagination]}
+                    modules={[Pagination, Autoplay]}
                     className="mySwiper"
                 >
                     <SwiperSlide className="relative group">

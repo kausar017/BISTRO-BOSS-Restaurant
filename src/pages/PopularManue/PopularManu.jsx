@@ -5,7 +5,7 @@ import ManueItem from "./ManueItem/ManueItem";
 const PopularManu = () => {
 
     const [manue, setManue] = useState([])
-    console.log(manue);
+    // console.log(manue);
 
     useEffect(() => {
         fetch('./menu.json')

@@ -65,7 +65,7 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className="menu menu-sm lg:hidden dropdown-content bg-base-100 rounded-box z-[1] space-y-3 mt-3 w-52 p-2 shadow">
+                            className="menu menu-sm lg:hidden dropdown-content border-2 bg-white/20 rounded-none rounded-box z-[1] space-y-3 mt-3 w-52 p-2 shadow">
                             {link}
                         </ul>
                     </div>

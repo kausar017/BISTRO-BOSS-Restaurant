@@ -5,6 +5,7 @@ import MainLayout from "../MainLayout/MainLayout";
 import Bannar from "../../pages/Bannar/Bannar";
 import Manu from "../../pages/Manu/Manu";
 import Loader from "../../pages/Loader/Loader";
+import OurShop from "../../pages/OurShop/OurShop";
 
 
 const Router = createBrowserRouter([
@@ -23,6 +24,10 @@ const Router = createBrowserRouter([
             {
                 path: '/lodar',
                 element: <Loader></Loader>
+            },
+            {
+                path: '/ourshop',
+                element: <OurShop></OurShop>
             }
         ]
     },

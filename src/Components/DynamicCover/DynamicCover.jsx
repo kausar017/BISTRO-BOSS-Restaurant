@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import banar from '../../assets/menu/banner3.jpg'
 import { Parallax } from 'react-parallax';
 
-const DynamicCover = ({ title, discriptoin }) => {
+const DynamicCover = ({ title, discriptoin, banar}) => {
     return (
 
         <Parallax
@@ -12,7 +11,8 @@ const DynamicCover = ({ title, discriptoin }) => {
             strength={-200}
 
         >
-            <div className="hero min-h-[700px]">
+            <div className="hero min-h-[700px]"
+            >
                 <div className=""></div>
                 <div className="hero-content text-neutral-content text-center ">
                     <div className="max-w- lg:w-[800px] md:w-[600px] max-sm:px-10 bg-black/60 min-h-60 flex flex-col justify-center items-center">

@@ -9,7 +9,7 @@ const Navbar = () => {
         <NavLink className='lg:text-white font-bold sm:text-black'>CONTACT US</NavLink>
         <NavLink className='lg:text-white font-bold sm:text-black'>DASHBOARD</NavLink>
         <NavLink to={'/manu'} className='lg:text-white font-bold sm:text-black'>OUR MANUE</NavLink>
-        <NavLink className='lg:text-white font-bold sm:text-black'>OUR SHOP</NavLink>
+        <NavLink to={'/ourshop'} className='lg:text-white font-bold sm:text-black'>OUR SHOP</NavLink>
     </>
 
     return (

@@ -11,11 +11,11 @@ const DynamicCover = ({ title, discriptoin, banar}) => {
             strength={-200}
 
         >
-            <div className="hero min-h-[700px]"
+            <div className="hero md:min-h-[700px]"
             >
                 <div className=""></div>
                 <div className="hero-content text-neutral-content text-center ">
-                    <div className="max-w- lg:w-[800px] md:w-[600px] max-sm:px-10 bg-black/60 min-h-60 flex flex-col justify-center items-center">
+                    <div className="lg:w-[800px] md:w-[600px] max-sm:px-5 bg-black/60 min-h-60 flex flex-col justify-center items-center">
                         <h1 className="mb-5 text-5xl font-bold">{title}</h1>
                         <p className="mb-5">
                             {discriptoin}

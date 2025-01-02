@@ -14,13 +14,13 @@ import { Navigation, Autoplay } from 'swiper/modules';
 
 const TESTIMONIALS = () => {
 
-    const [revieo, setRevieo] = useState([])
+    const [review, setReview] = useState([])
     // console.log(revieo);
 
     useEffect(() => {
-        fetch(`./reviews.json`)
+        fetch(`http://localhost:5000/reviews`)
             .then(res => res.json())
-            .then(data => setRevieo(data))
+            .then(data => setReview(data))
             .catch(error => {
                 console.log(error, 'data fetching error');
             })
@@ -44,17 +44,18 @@ const TESTIMONIALS = () => {
                     className=" py-5">
 
                     {
-                        revieo?.map(slaid =>
-                            <SwiperSlide>
+                        review?.map(slaid =>
+                            <SwiperSlide key={slaid._id}>
 
                                 <div className="lg:px-52 flex flex-col justify-center items-center text-center">
 
                                     <ReactStars
                                         count={5}
-                                        value={slaid.rating}
+                                        value={slaid?.rating || 0}
                                         size={24}
                                         activeColor="#ffd700"
                                     />
+
 
                                     <p className="text-5xl">“</p>
                                     <p>{slaid.details}</p>

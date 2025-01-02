@@ -25,7 +25,7 @@ const Manu = () => {
 
         <>
             <Helmet>
-                <title>Manu </title>
+                <title>BISTRO BOSS | Manu </title>
             </Helmet>
 
             <section>
@@ -41,7 +41,7 @@ const Manu = () => {
                     title={"TODAY'S OFFER"}
                 ></DynamicTitle>
                 <div className='py-10'>
-                    <ManuCatagory data={offered}></ManuCatagory>
+                    <ManuCatagory data={offered} title={'drinks'}></ManuCatagory>
                 </div>
             </section>
             <section>
@@ -51,7 +51,7 @@ const Manu = () => {
                     discription={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 ></DynamicBannar>
                 <div className='py-10'>
-                    <ManuCatagory data={dessert}></ManuCatagory>
+                    <ManuCatagory data={dessert} title='desserts'></ManuCatagory>
                 </div>
             </section>
             <section>
@@ -61,7 +61,7 @@ const Manu = () => {
                     discription={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 ></DynamicBannar>
                 <div className='py-10'>
-                    <ManuCatagory data={pizza}></ManuCatagory>
+                    <ManuCatagory data={pizza} title={'pizza'}></ManuCatagory>
                 </div>
             </section>
             <section>
@@ -71,7 +71,7 @@ const Manu = () => {
                     discription={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 ></DynamicBannar>
                 <div className='py-10'>
-                    <ManuCatagory data={salad}></ManuCatagory>
+                    <ManuCatagory data={salad} title={'salad'}></ManuCatagory>
                 </div>
             </section>
             <section>
@@ -81,7 +81,7 @@ const Manu = () => {
                     discription={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
                 ></DynamicBannar>
                 <div className='py-10'>
-                    <ManuCatagory data={soup}></ManuCatagory>
+                    <ManuCatagory data={soup} title={'soup'}></ManuCatagory>
                 </div>
             </section>
         </>

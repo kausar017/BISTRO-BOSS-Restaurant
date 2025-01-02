@@ -6,14 +6,26 @@ import bannar from '../../assets/shop/banner2.jpg'
 import { useState } from "react";
 import Hooks from "../../Hooks/Hooks";
 import FoodCard from "./FoodCard";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const OurShop = () => {
 
-    const [tebIndex, setTabIndex] = useState(0)
+    const categoris = ['salad', 'pizza', 'soup', 'desserts', 'drinks']
+    const { category } = useParams();
+    console.log(category);
 
+    const initialIndex = categoris.indexOf(category?.toLowerCase());
+    const [tebIndex, setTabIndex] = useState(initialIndex)
+    console.log(tebIndex);
+    
     const [manue] = Hooks()
+    console.log(manue);
+
     const dessert = manue.filter(item => item.category === 'dessert')
+    console.log(dessert);
+    
     const pizza = manue.filter(item => item.category === 'pizza')
     const soup = manue.filter(item => item.category === 'soup')
     const salad = manue.filter(item => item.category === 'salad')
@@ -22,13 +34,17 @@ const OurShop = () => {
     return (
 
         <div>
+            <Helmet>
+                <title>BISTRO BOSS | OUR SHOP </title>
+            </Helmet>
+
             <DynamicCover
                 title='OUR MENU'
                 discriptoin='Would you like to try a dish?'
                 banar={bannar}
             ></DynamicCover>
             <section className="w-8/12 mx-auto py-10">
-                <Tabs defaultIndex={0} onSelect={(index) => setTabIndex(index)}>
+                <Tabs defaultIndex={tebIndex} onSelect={(index) => setTabIndex(index)}>
                     <TabList className={'text-md flex justify-center items-center'}>
                         <Tab>Salad</Tab>
                         <Tab>pizza</Tab>

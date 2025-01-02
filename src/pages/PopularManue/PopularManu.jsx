@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+
 import DynamicTitle from "../../Components/DynamicTitle/DynamicTitle";
 import ManueItem from "./ManueItem/ManueItem";
 import Hooks from "../../Hooks/Hooks";
 import Loader from "../Loader/Loader";
 
+
 const PopularManu = () => {
 
-    const [manue, loding] = Hooks()
+
+    const [manu, loding] = Hooks()
+    // console.log(manu);
+
     if (loding) {
         return <Loader></Loader>
     }
-    const popularItems = manue.filter(item => item.category === 'popular')
+    const popularItems = manu.filter(item => item.category === 'popular')
     console.log(popularItems);
 
     return (

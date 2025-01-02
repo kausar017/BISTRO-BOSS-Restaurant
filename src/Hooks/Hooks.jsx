@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
 const Hooks = () => {
-    const [manue, setManue] = useState([])
+    const [manu, setManu] = useState([])
+    // console.log(manu);
+    
     const [loding, setLoding] = useState(true)
     useEffect(() => {
-        fetch('./menu.json')
+        fetch('http://localhost:5000/manu')
             .then(res => res.json())
             .then(data => {
-                setManue(data)
+                setManu(data)
                 setLoding(false)
             })
             .catch(error => {
@@ -16,7 +18,7 @@ const Hooks = () => {
             })
     }, [])
 
-    return [manue, loding]
+    return [manu, loding]
 };
 
 export default Hooks;

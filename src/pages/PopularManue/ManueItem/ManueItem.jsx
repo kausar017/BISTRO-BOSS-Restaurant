@@ -2,12 +2,12 @@
 import PropTypes from 'prop-types';
 
 const ManueItem = ({ data }) => {
-    const { name, recipe, image, price } = data
+    const { name, recipe, image, price } = data || {};
     return (
         <div className=''>
             <div className='flex gap-4 items-center'>
                 <div className=''>
-                    <img className='rounded-b-full w-32 rounded-r-full transition hover:scale-105 object-cover' src={image} alt={image} />
+                    <img referrerPolicy='no-referrer' className='rounded-b-full w-32 rounded-r-full transition hover:scale-105 object-cover' src={image} alt={image} />
                 </div>
                 <div className='flex gap-2'>
                     <div>

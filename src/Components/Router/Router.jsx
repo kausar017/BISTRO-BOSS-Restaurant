@@ -8,6 +8,10 @@ import Loader from "../../pages/Loader/Loader";
 import OurShop from "../../pages/OurShop/OurShop";
 import Login from "../../AccessPage/Login";
 import SingUp from "../../AccessPage/SingUp";
+import PrivetRoute from "../../Authentication/PrivetRoute/PrivetRoute";
+import Dashbord from "../MainLayout/Dashbord";
+import MyCart from "../../pages/My-Cart/MyCart";
+import AllUsers from "../../pages/AllUsers/AllUsers";
 
 
 const Router = createBrowserRouter([
@@ -24,10 +28,6 @@ const Router = createBrowserRouter([
                 element: <Manu></Manu>
             },
             {
-                path: '/lodar',
-                element: <Loader></Loader>
-            },
-            {
                 path: '/ourshop/:category',
                 element: <OurShop></OurShop>
             },
@@ -41,7 +41,25 @@ const Router = createBrowserRouter([
     {
         path: '/signup',
         element: <SingUp></SingUp>,
+    },
+    {
+        path: '/dasbord',
+        element: <PrivetRoute>
+            <Dashbord></Dashbord>
+        </PrivetRoute>,
+        children: [
+            {
+                path: 'myCart',
+                element: <MyCart></MyCart>
+            },
+            // admin path
+            {
+                path: '/dasbord/users',
+                element: <AllUsers></AllUsers>
+            }
+        ]
     }
+
 ]);
 
 

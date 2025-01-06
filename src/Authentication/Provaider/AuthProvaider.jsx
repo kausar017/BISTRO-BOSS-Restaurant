@@ -1,10 +1,13 @@
-import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/Firebase.init";
+import useAxiosPiblic from "../../Hooks/useAxiosPiblic";
 
 export const AuthContext = createContext(null)
 
 const AuthProvaider = ({ children }) => {
+
+    const axiosPiblic = useAxiosPiblic()
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -13,6 +16,12 @@ const AuthProvaider = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
+    const updateuserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        })
+    }
+
     const login = (email, password) => {
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
@@ -30,6 +39,7 @@ const AuthProvaider = ({ children }) => {
     }
     const authInfo = {
         creatAcount,
+        updateuserProfile,
         login,
         logOut,
         Google,
@@ -41,7 +51,20 @@ const AuthProvaider = ({ children }) => {
     useEffect(() => {
         const unsubscrib = onAuthStateChanged(auth, currnetUser => {
             setUser(currnetUser)
-            console.log(currnetUser);
+            if (currnetUser) {
+                // get token
+                const userInfo = { email: currnetUser.email }
+                axiosPiblic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token)
+                        }
+                    })
+            } else {
+                //remove token
+                localStorage.removeItem('access-token')
+
+            }
             setLoading(false)
         })
         return () => {

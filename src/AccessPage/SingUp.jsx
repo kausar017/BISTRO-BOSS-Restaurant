@@ -8,31 +8,63 @@ import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Authentication/Provaider/AuthProvaider";
 import Swal from "sweetalert2";
+import useAxiosPiblic from "../Hooks/useAxiosPiblic";
+import SosalLogin from "./SosalLogin";
 
 const SingUp = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || '/'; 
+    const from = location.state?.from?.pathname || '/';
+    const axiosPiblic = useAxiosPiblic()
 
-    const { creatAcount } = useContext(AuthContext)
+    const { creatAcount, updateuserProfile } = useContext(AuthContext)
     const {
         register,
         handleSubmit,
-        watch,
+        reset,
         formState: { errors },
     } = useForm()
 
     const onSubmit = (data) => {
-        console.log(data)
+        console.log(data);
+
+        // Step 1: Create Account
         creatAcount(data.email, data.password)
             .then(res => {
-                const loguser = res.loguser;
-                console.log(loguser);
-                navigate(from, { replace: true });
-                Swal.fire('signup successfully')
+                const loguser = res.user; // User created and logged in
+                console.log('User created:', loguser);
+
+                // Step 2: Update User Profile
+                return updateuserProfile(data.name, data.photo);
             })
-    }
+            .then(() => {
+                console.log('User profile updated successfully');
+
+                // Step 3: Save user to database
+                const userInfo = {
+                    name: data.name,
+                    email: data.email
+                };
+
+                return axiosPiblic.post('/users', userInfo);
+            })
+            .then(res => {
+                if (res.data.insertedId) {
+                    console.log('User added to the database');
+                    reset();
+                    navigate(from, { replace: true });
+                    Swal.fire('Signup successful!');
+                } else {
+                    console.log('Database insertion failed');
+                }
+            })
+            .catch(error => {
+                console.error('Signup error:', error);
+                Swal.fire('Signup failed. Please try again.');
+            });
+    };
+
 
 
     const [showPassword, setShowPassword] = useState(false)
@@ -76,6 +108,13 @@ const SingUp = () => {
                                         <input type="email" name='email'{...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                                         {errors.email && <span className="text-red-600">email is required</span>}
                                     </div>
+                                    <div className="form-control">
+                                        <label className="label">
+                                            <span className="label-text">Photo Url</span>
+                                        </label>
+                                        <input type="url" name='photo'{...register("photo", { required: true })} placeholder="Photo Url" className="input input-bordered" />
+                                        {errors.photo && <span className="text-red-600">valide photo Url is required</span>}
+                                    </div>
                                     <div className="form-control relative">
                                         <label className="label">
                                             <span className="label-text">Password</span>
@@ -103,7 +142,11 @@ const SingUp = () => {
                                         <button className="btn bg-[#D1A054B3]">signup</button>
                                     </div>
                                     <p className='text-center text-[#cf8d29b3]'>your Acoutn allrady Created please <Link className="text-green-600 font-bold  hover:underline" to={'/login'}>Login</Link> </p>
-
+                                    <div className="divider"></div>
+                                    <p className="text-center">or sing up with</p>
+                                    <div className="flex justify-center items-center gap-3">
+                                        <SosalLogin></SosalLogin>
+                                    </div>
                                 </form>
                             </div>
                             <div className="flex flex-col justify-center items-center">

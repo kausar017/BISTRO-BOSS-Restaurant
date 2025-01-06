@@ -14,17 +14,17 @@ const OurShop = () => {
 
     const categoris = ['salad', 'pizza', 'soup', 'desserts', 'drinks']
     const { category } = useParams();
-    console.log(category);
+    // console.log(category);
 
     const initialIndex = categoris.indexOf(category?.toLowerCase());
     const [tebIndex, setTabIndex] = useState(initialIndex)
-    console.log(tebIndex);
+    // console.log(tebIndex);
     
     const [manue] = Hooks()
-    console.log(manue);
+    // console.log(manue);
 
     const dessert = manue.filter(item => item.category === 'dessert')
-    console.log(dessert);
+    // console.log(dessert);
     
     const pizza = manue.filter(item => item.category === 'pizza')
     const soup = manue.filter(item => item.category === 'soup')
@@ -39,7 +39,7 @@ const OurShop = () => {
             </Helmet>
 
             <DynamicCover
-                title='OUR MENU'
+                title='OUR SHOP'
                 discriptoin='Would you like to try a dish?'
                 banar={bannar}
             ></DynamicCover>

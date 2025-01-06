@@ -3,7 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 import './Navbar.css'
 import { AuthContext } from '../../Authentication/Provaider/AuthProvaider';
 import Swal from 'sweetalert2';
+import UseCard from '../../Hooks/useCard/UseCard';
 const Navbar = () => {
+
+    const [cart] = UseCard()
+    // console.log(cart);
 
     const { user, logOut } = useContext(AuthContext)
 
@@ -17,9 +21,9 @@ const Navbar = () => {
     }
 
     const link = <>
-        <NavLink className='lg:text-white font-bold sm:text-black'>HOME</NavLink>
-        <NavLink className='lg:text-white font-bold sm:text-black'>CONTACT US</NavLink>
-        <NavLink className='lg:text-white font-bold sm:text-black'>DASHBOARD</NavLink>
+        <NavLink to={'/'} className='lg:text-white font-bold sm:text-black'>HOME</NavLink>
+        <NavLink to={'5'} className='lg:text-white font-bold sm:text-black'>CONTACT US</NavLink>
+        <NavLink to={'dasbord'} className='lg:text-white font-bold sm:text-black'>DASHBOARD</NavLink>
         <NavLink to={'/manu'} className='lg:text-white font-bold sm:text-black'>OUR MANUE</NavLink>
         <NavLink to={'/ourshop/salad'} className='lg:text-white font-bold sm:text-black'>OUR SHOP</NavLink>
     </>
@@ -42,11 +46,13 @@ const Navbar = () => {
                                 {link}
                             </ul>
                         </div>
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+                        <Link
+                            to={'dasbord/myCart'}
+                            tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                             <div className="indicator">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-5 w-5 text-white"
+                                    className="h-6 w-6 text-white"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -56,9 +62,9 @@ const Navbar = () => {
                                         strokeWidth="2"
                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
-                                <span className="badge badge-sm indicator-item">8</span>
+                                <span className="badge badge-sm bg-red-500 text-white indicator-item">+{cart.length}</span>
                             </div>
-                        </div>
+                        </Link>
                         <div
                             tabIndex={0}
                             className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
@@ -76,10 +82,17 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 {
-                                    user ? <img referrerPolicy='no-referrer' className='w-full ' src={user?.photoURL} alt="" /> : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
+                                    user ?
+                                        <div>
+                                            <img title={user?.displayName} referrerPolicy='no-referrer' className='w-full ' src={user?.photoURL} alt="" />
+                                        </div>
+
+                                        :
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.52 19c.64-2.2 1.84-3 3.22-3h6.52c1.38 0 2.58.8 3.22 3" /><circle cx="12" cy="10" r="3" /><circle cx="12" cy="12" r="10" /></svg>
                                 }
 
                             </div>
+                            <p className='text-white'>{user?.displayName}</p>
                         </div>
                         <ul
                             tabIndex={0}

@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Authentication/Provaider/AuthProvaider';
 import { IoEyeOff, IoEyeSharp } from 'react-icons/io5';
 import { Helmet } from 'react-helmet-async';
+import SosalLogin from './SosalLogin';
 
 const Login = () => {
     const captcharep = useRef(null);
@@ -43,6 +44,7 @@ const Login = () => {
             })
     };
     const handaleValidetCaptcha = e => {
+        e.preventDefault()
         const user_captcha_value = captcharep.current.value;
         if (validateCaptcha(user_captcha_value)) {
             setDesable()
@@ -125,7 +127,7 @@ const Login = () => {
                                         <p>or sing in with</p>
                                         <div className='flex items-center p-2 gap-3'>
                                             <Link className='p-2 border-black border rounded-full'><BiLogoFacebook size={30}></BiLogoFacebook> </Link>
-                                            <button onClick={handaleGooglSubmit} className='p-2 border-black border rounded-full'><IoLogoGoogle size={30}></IoLogoGoogle > </button>
+                                            <SosalLogin></SosalLogin>
                                             <Link className='p-2 border-black border rounded-full'><IoLogoGithub size={30}></IoLogoGithub > </Link>
                                         </div>
                                     </div>

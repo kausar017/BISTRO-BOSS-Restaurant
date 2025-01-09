@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import DynamicCover from "../../Components/DynamicCover/DynamicCover";
 import bannar from '../../assets/shop/banner2.jpg'
 import { useState } from "react";
-import Hooks from "../../Hooks/Hooks";
+import useManu from "../../Hooks/useManu";
 import FoodCard from "./FoodCard";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -19,17 +19,17 @@ const OurShop = () => {
     const initialIndex = categoris.indexOf(category?.toLowerCase());
     const [tebIndex, setTabIndex] = useState(initialIndex)
     // console.log(tebIndex);
-    
-    const [manue] = Hooks()
+
+    const [manue] = useManu()
     // console.log(manue);
 
-    const dessert = manue.filter(item => item.category === 'dessert')
-    // console.log(dessert);
     
-    const pizza = manue.filter(item => item.category === 'pizza')
-    const soup = manue.filter(item => item.category === 'soup')
-    const salad = manue.filter(item => item.category === 'salad')
-    const drinks = manue.filter(item => item.category === 'drinks')
+    const dessert = manue?.filter(item => item.category === 'dessert') || [];
+    const pizza = manue?.filter(item => item.category === 'pizza') || [];
+    const soup = manue?.filter(item => item.category === 'soup') || [];
+    const salad = manue?.filter(item => item.category === 'salad') || [];
+    const drinks = manue?.filter(item => item.category === 'drinks') || [];
+
 
     return (
 

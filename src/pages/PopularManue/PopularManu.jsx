@@ -1,14 +1,14 @@
 
 import DynamicTitle from "../../Components/DynamicTitle/DynamicTitle";
 import ManueItem from "./ManueItem/ManueItem";
-import Hooks from "../../Hooks/Hooks";
+import useManu from "../../Hooks/useManu";
 import Loader from "../Loader/Loader";
 
 
 const PopularManu = () => {
 
 
-    const [manu, loding] = Hooks()
+    const [manu, loding] = useManu()
     // console.log(manu);
 
     if (loding) {

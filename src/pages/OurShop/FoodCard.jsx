@@ -74,7 +74,7 @@ const FoodCard = ({ item }) => {
                 <p className='absolute -right-0 m-2 px-3 py-1 rounded-lg bg-black/70 text-white'>${price}</p>
                 <div className="card-body items-center">
                     <h2 className="card-title">{name}</h2>
-                    <p>{recipe}</p>
+                    <p>{recipe.slice(0, 40)}</p>
                     <div className="card-actions">
                         <button
                             onClick={handaleAddtoCard}

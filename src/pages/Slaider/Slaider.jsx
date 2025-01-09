@@ -42,22 +42,22 @@ const Slaider = () => {
                 className="mySwiper2"
             >
                 <SwiperSlide>
-                    <img className='w-full h-[90vh] object-cover' src={slaider1} />
+                    <img className='w-full h-[70vh] object-cover' src={slaider1} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[90vh] object-cover' src={slaider2} />
+                    <img className='w-full h-[70vh] object-cover' src={slaider2} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[90vh] object-cover' src={slaider3} />
+                    <img className='w-full h-[70vh] object-cover' src={slaider3} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[90vh] object-cover' src={slaider4} />
+                    <img className='w-full h-[70vh] object-cover' src={slaider4} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[90vh] object-cover' src={slaider5} />
+                    <img className='w-full h-[70vh] object-cover' src={slaider5} />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='w-full h-[90vh] object-cover' src={slaider6} />
+                    <img className='w-full h-[70vh] object-cover' src={slaider6} />
                 </SwiperSlide>
             </Swiper>
             <div className='w-8/12 mx-auto py-5'>

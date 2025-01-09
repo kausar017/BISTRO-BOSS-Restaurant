@@ -12,6 +12,12 @@ import PrivetRoute from "../../Authentication/PrivetRoute/PrivetRoute";
 import Dashbord from "../MainLayout/Dashbord";
 import MyCart from "../../pages/My-Cart/MyCart";
 import AllUsers from "../../pages/AllUsers/AllUsers";
+import Contact from "../../pages/Contact/Contact";
+import AddItem from "../../pages/AddItem/AddItem";
+import AdminRoute from "../../pages/AdminRoute/AdminRoute";
+import ManageItem from "../../pages/ManageItem/ManageItem";
+import ManageItemUpdate from "../../pages/ManageItem/ManageItemUpdate";
+import Payment from "../../pages/Payment/Payment";
 
 
 const Router = createBrowserRouter([
@@ -31,6 +37,10 @@ const Router = createBrowserRouter([
                 path: '/ourshop/:category',
                 element: <OurShop></OurShop>
             },
+            {
+                path: 'contact',
+                element: <Contact></Contact>
+            },
 
         ],
     },
@@ -42,21 +52,50 @@ const Router = createBrowserRouter([
         path: '/signup',
         element: <SingUp></SingUp>,
     },
+    // dasbord route
     {
         path: '/dasbord',
         element: <PrivetRoute>
             <Dashbord></Dashbord>
         </PrivetRoute>,
         children: [
+            // normal user routes
             {
                 path: 'myCart',
                 element: <MyCart></MyCart>
             },
-            // admin path
+            {
+                path: '/dasbord/Payment',
+                element: 
+                   <Payment></Payment>
+               
+            },
+            // admin rputes
+            {
+                path: '/dasbord/additem',
+                element: <AdminRoute>
+                    <AddItem></AddItem>
+                </AdminRoute>
+            },
+
             {
                 path: '/dasbord/users',
-                element: <AllUsers></AllUsers>
-            }
+                element: <AdminRoute>
+                    <AllUsers></AllUsers>
+                </AdminRoute>
+            },
+            {
+                path: '/dasbord/manageItems',
+                element: <AdminRoute>
+                    <ManageItem></ManageItem>
+                </AdminRoute>
+            },
+            {
+                path: '/dasbord/update/:id',
+                element: <AdminRoute><ManageItemUpdate></ManageItemUpdate></AdminRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/manu/${params.id}`)
+            },
+            
         ]
     }
 

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import DynamicBannar from '../../Components/DynamicBannar/DynamicBannar';
 import DynamicCover from '../../Components/DynamicCover/DynamicCover';
 import DynamicTitle from '../../Components/DynamicTitle/DynamicTitle';
-import Hooks from '../../Hooks/Hooks';
+import useManu from '../../Hooks/useManu';
 import ManuCatagory from '../../Components/ManuCatagory/ManuCatagory';
 import banar from '../../assets/menu/banner3.jpg'
 
@@ -14,7 +14,7 @@ import soupImg from '../../assets/menu/soup-bg.jpg'
 
 const Manu = () => {
 
-    const [manue] = Hooks()
+    const [manue] = useManu()
     const dessert = manue.filter(item => item.category === 'dessert')
     const pizza = manue.filter(item => item.category === 'pizza')
     const soup = manue.filter(item => item.category === 'soup')

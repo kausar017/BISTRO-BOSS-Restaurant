@@ -4,6 +4,7 @@ import UseCard from "../../Hooks/useCard/UseCard";
 import { FaDatabase } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../Authentication/Provaider/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [cart, refetch] = UseCard()
@@ -52,10 +53,16 @@ const MyCart = () => {
                 title={'WANNA ADD MORE?'}
             ></DynamicTitle>
             <div>
-                <div className="md:flex justify-around">
+                <div className="flex lg:flex-row md:flex-row max-sm:flex-col space-y-3 items-center justify-around ">
                     <h3 className="text-2xl font-bold">Total orders: {cart.length}</h3>
                     <h3 className="text-2xl font-bold">Total price: ${totalPrice.toFixed(2)}</h3>
-                    <button className="btn bg-[#D1A054] text-white">play</button>
+                    {!cart.length == 0 ?
+                        <Link to={'/dasbord/Payment'}>
+                            <button className="btn bg-[#D1A054] text-white">play</button>
+                        </Link>
+                        :
+                        <button disabled className="btn bg-[#D1A054] text-white">play</button>
+                    }
                 </div>
                 <div className="max-sm:overflow-x-scroll px-8 py-8 ">
 

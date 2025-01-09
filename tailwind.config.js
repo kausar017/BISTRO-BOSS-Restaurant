@@ -8,4 +8,7 @@ export default {
     extend: {},
   },
   plugins: [ require('daisyui'),],
+  daisyui: {
+    themes: ["light", "dark"], // লাইট এবং ডার্ক থিম অ্যাড করুন
+  },
 }

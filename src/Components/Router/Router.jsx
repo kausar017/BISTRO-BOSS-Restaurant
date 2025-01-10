@@ -18,6 +18,9 @@ import AdminRoute from "../../pages/AdminRoute/AdminRoute";
 import ManageItem from "../../pages/ManageItem/ManageItem";
 import ManageItemUpdate from "../../pages/ManageItem/ManageItemUpdate";
 import Payment from "../../pages/Payment/Payment";
+import PaymentHIstroy from "../../pages/PaymentHistroy/PaymentHIstroy";
+import AdminHome from "../../pages/AdminHome/AdminHome";
+import UserHome from "../../pages/UserHome/UserHome";
 
 
 const Router = createBrowserRouter([
@@ -66,11 +69,29 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/dasbord/Payment',
-                element: 
-                   <Payment></Payment>
-               
+                element:
+                    <Payment></Payment>
+
+            },
+            {
+                path: '/dasbord/userHome',
+                element:
+                   <UserHome></UserHome>
+
+            },
+            {
+                path: '/dasbord/PaymentHistroy',
+                element:
+                    <PaymentHIstroy></PaymentHIstroy>
+
             },
             // admin rputes
+            {
+                path: '/dasbord/adminHome',
+                element: <AdminRoute>
+                    <AdminHome></AdminHome>
+                </AdminRoute>
+            },
             {
                 path: '/dasbord/additem',
                 element: <AdminRoute>
@@ -95,7 +116,7 @@ const Router = createBrowserRouter([
                 element: <AdminRoute><ManageItemUpdate></ManageItemUpdate></AdminRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/manu/${params.id}`)
             },
-            
+
         ]
     }
 

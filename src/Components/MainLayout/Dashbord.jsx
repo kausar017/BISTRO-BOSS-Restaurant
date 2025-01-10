@@ -85,7 +85,7 @@ const Dashbord = () => {
                                     isAdmin ?
                                         <>
                                             <div className="flex flex-col justify-start py-5 px-2 gap-3">
-                                                <NavLink to={'1'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>Admin Home </button></NavLink>
+                                                <NavLink to={'/dasbord/adminHome'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>Admin Home </button></NavLink>
                                                 <NavLink to={'/dasbord/additem'}><button className="btn btn-ghost btn-sm uppercase"><FaUtensils size={20}></FaUtensils > Add Items</button></NavLink>
                                                 <NavLink to={'/dasbord/manageItems'}><button className="btn btn-ghost btn-sm uppercase "><FaList size={20}></FaList > manage items </button></NavLink>
                                                 <NavLink to={'/dasbord/boking'}><button className="btn btn-ghost btn-sm uppercase"><FaBook size={20}></FaBook> Manage bookings </button></NavLink>
@@ -96,9 +96,9 @@ const Dashbord = () => {
                                         :
                                         <>
                                             <div className="flex flex-col justify-start py-5 px-2 gap-3">
-                                                <NavLink to={'5'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>User Home </button></NavLink>
+                                                <NavLink to={'/dasbord/userHome'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>User Home </button></NavLink>
                                                 <NavLink to={'/dasbord/Payment'}><button className="btn btn-ghost btn-sm uppercase"><FaCalendar size={20}></FaCalendar> reservation</button></NavLink>
-                                                <NavLink to={'4'}><button className="btn btn-ghost btn-sm uppercase "><FaMoneyBills size={20}></FaMoneyBills> payment history </button></NavLink>
+                                                <NavLink to={'/dasbord/PaymentHistroy'}><button className="btn btn-ghost btn-sm uppercase "><FaMoneyBills size={20}></FaMoneyBills> payment history </button></NavLink>
                                                 <NavLink to={'/dasbord/myCart'}><button className="btn btn-ghost btn-sm uppercase"><BsCart4 size={20}></BsCart4> my cart <span className="bg-red-500 p-1 rounded-full text-white">{cart?.length}</span></button></NavLink>
                                                 <NavLink to={'7'}><button className="btn btn-ghost btn-sm uppercase "><VscPreview size={20}></VscPreview> add review </button></NavLink>
                                                 <NavLink to={'9'}><button className="btn btn-ghost btn-sm uppercase"><FaSwatchbook size={20}></FaSwatchbook> my booking</button></NavLink>
@@ -148,7 +148,7 @@ const Dashbord = () => {
                         isAdmin ?
                             <>
                                 <div className="flex flex-col justify-start py-5 px-2 gap-3">
-                                    <NavLink to={'1'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>Admin Home </button></NavLink>
+                                    <NavLink to={'/dasbord/adminHome'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>Admin Home </button></NavLink>
                                     <NavLink to={'/dasbord/addItem'}><button className="btn btn-ghost btn-sm uppercase"><FaUtensils size={20}></FaUtensils > Add Items</button></NavLink>
                                     <NavLink to={'/dasbord/manageItems'}><button className="btn btn-ghost btn-sm uppercase "><FaList size={20}></FaList > manage items </button></NavLink>
                                     <NavLink to={'/dasbord/boking'}><button className="btn btn-ghost btn-sm uppercase"><FaBook size={20}></FaBook> Manage bookings </button></NavLink>
@@ -159,9 +159,9 @@ const Dashbord = () => {
                             :
                             <>
                                 <div className="flex flex-col justify-start py-5 px-2 gap-3 ">
-                                    <NavLink to={'5'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>User Home </button></NavLink>
+                                    <NavLink to={'/dasbord/userHome'}><button className="btn btn-ghost btn-sm uppercase"><FaHome size={20}></FaHome>User Home </button></NavLink>
                                     <NavLink to={'/dasbord/Payment'}><button className="btn btn-ghost btn-sm uppercase"><FaCalendar size={20}></FaCalendar> reservation</button></NavLink>
-                                    <NavLink to={'4'}><button className="btn btn-ghost btn-sm uppercase "><FaMoneyBills size={20}></FaMoneyBills> payment history </button></NavLink>
+                                    <NavLink to={'/dasbord/PaymentHistroy'}><button className="btn btn-ghost btn-sm uppercase "><FaMoneyBills size={20}></FaMoneyBills> payment history </button></NavLink>
                                     <NavLink to={'/dasbord/myCart'}><button className="btn btn-ghost btn-sm uppercase"><BsCart4 size={20}></BsCart4> my cart <span className="bg-red-500 p-1 rounded-full text-white">{cart?.length}</span></button></NavLink>
                                     <NavLink to={'7'}><button className="btn btn-ghost btn-sm uppercase "><VscPreview size={20}></VscPreview> add review </button></NavLink>
                                     <NavLink to={'9'}><button className="btn btn-ghost btn-sm uppercase"><FaSwatchbook size={20}></FaSwatchbook> my booking</button></NavLink>

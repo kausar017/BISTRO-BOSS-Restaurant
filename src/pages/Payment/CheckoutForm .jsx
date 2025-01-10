@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Authentication/Provaider/useAxiosSecure";
 import UseCard from "../../Hooks/useCard/UseCard";
 import AuthHooks from "../../Authentication/Provaider/AuthHooks";
+import { useNavigate } from "react-router-dom";
 
 
 const CheckoutForm = () => {
@@ -16,16 +17,21 @@ const CheckoutForm = () => {
     const [ClientSectret, setClientSectret] = useState()
     const [TranJection, setTranJection] = useState()
 
-    const [cart] = UseCard()
+    const naviget = useNavigate()
+
+    const [cart, refetch] = UseCard()
     const totalPrice = cart.reduce((total, item) => total + (item.price || 0), 0);
     // console.log(totalPrice);
 
     useEffect(() => {
-        axiosSecure.post('/create-checkout-session', { price: totalPrice })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSectret(res.data.clientSecret)
-            })
+        if (totalPrice > 0) {
+            axiosSecure.post('/create-checkout-session', { price: totalPrice })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSectret(res.data.clientSecret)
+                })
+        }
+
     }, [axiosSecure, totalPrice])
 
 
@@ -70,6 +76,32 @@ const CheckoutForm = () => {
             if (paymentIntent.status === 'succeeded') {
                 console.log('tranjection id', paymentIntent.id);
                 setTranJection(paymentIntent.id)
+
+                // now save in payment in the database
+                const payment = {
+                    email: user.email,
+                    price: totalPrice,
+                    tranJectionId: paymentIntent.id,
+                    date: new Date(),//
+                    cartIds: cart.map(item => item._id),
+                    menuItemIds: cart.map(item => item.menuId),
+                    status: 'pending'
+                }
+                const res = await axiosSecure.post('/paymensts', payment)
+                console.log(res.data);
+
+                if (res.data?.result?.insertedId) {
+                    refetch()
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Your Payment hasben successfully",
+                        showConfirmButton: false,
+                        size: 50,
+                        timer: 1500
+                    });
+                    naviget('/dasbord/PaymentHistroy')
+                }
             }
         }
 
@@ -85,7 +117,7 @@ const CheckoutForm = () => {
                         style: {
                             base: {
                                 fontSize: '16px',
-                                color: '#ffff',
+                                color: '#24b3a4',
                                 '::placeholder': {
                                     color: '#aab7c4',
                                 },
